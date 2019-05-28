@@ -36,8 +36,8 @@ class picture {
     
 public:
     picture() {};
-    void readPicture(string FileName);
-    void writePicture(string SecondFile, int factor);
+    void readPicture(const char *FileName);
+    void writePicture(const char *FileName, int factor);
     
 };
 
