@@ -32,5 +32,24 @@ void picture::readPicture(const char *FileName){
     if (check) {
         stride = 4 - check;
     }
+    
+    array = new RGBQUAD*[header.depth];
+    for (int i = 0; i < header.depth; i++) {
+        array[i] = new RGBQUAD[header.width];
+    }
+    
+    for (int i = 0; i < header.depth; i++) {
+        for (int j = 0; j < header.width; j++) {
+            fread(&array[i][j].blueComponent, 1, 1, image);
+            fread(&array[i][j].greenComponent, 1, 1, image);
+            fread(&array[i][j].redComponent, 1, 1, image);
+        }
+        if (stride != 0) {
+            RGBQUAD empty;
+            fread(&empty, 1, stride, image);
+        }
+    }
+    fclose(image);
+
 }
 
