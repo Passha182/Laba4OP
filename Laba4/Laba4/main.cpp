@@ -9,6 +9,7 @@ int main(int agvc, const char *argv[]) {
     const char *result = argv[2];
     const char *buff = argv[3];
     int qwe = stoi(buff);
-    bmp.readPicture(file);
+    bmp.readPicture("test.bmp");
+    bmp.writePicture("output.bmp", 3);
     return 0;
 }
